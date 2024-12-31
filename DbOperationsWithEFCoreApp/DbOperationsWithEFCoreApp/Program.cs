@@ -1,4 +1,14 @@
+using DbOperationsWithEFCoreApp.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+// we have to tell EF to add DBContext class and have to configure in this file
+
+// SetUp of DBContext class
+builder.Services.AddDbContext<AppDBContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("AppDb"))
+);
+//
 
 // Add services to the container.
 
